@@ -1,31 +1,41 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import {usePathname} from "next/navigation";
-import {cn} from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const navItems = [
-    { label:'Home', href: '/' },
-    { label: 'Companions', href: '/companions' },
-    { label: 'My Journey', href: 'my-journey' },
-]
+  { label: "Home", href: "/" },
+  { label: "Companions", href: "/companions" },
+  { label: "My Journey", href: "/my-journey" },
+];
 
-const NavItems = () => {
-    const pathname = usePathname();
+const NavItems = ({
+  isMobile = false,
+  onClick,
+}: {
+  isMobile?: boolean;
+  onClick?: () => void;
+}) => {
+  const pathname = usePathname();
 
-    return (
-        <nav className="flex items-center gap-4">
-            {navItems.map(({ label, href }) => (
-                <Link
-                    href={href}
-                    key={label}
-                    className={cn(pathname === href && 'text-primary font-semibold')}
-                >
-                    {label}
-                </Link>
-            ))}
-        </nav>
-    )
-}
+  return (
+    <nav className={cn("flex gap-4", isMobile ? "flex-col" : "items-center")}>
+      {navItems.map(({ label, href }) => (
+        <Link
+          href={href}
+          key={label}
+          onClick={onClick}
+          className={cn(
+            pathname === href && "text-primary font-semibold",
+            isMobile && "text-lg py-2"
+          )}
+        >
+          {label}
+        </Link>
+      ))}
+    </nav>
+  );
+};
 
-export default NavItems
+export default NavItems;
