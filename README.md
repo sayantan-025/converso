@@ -47,7 +47,7 @@ Say hello to **Converso**, your personalized, intelligent tutor built for the mo
 
 ## 🚀 Live Demo
 
-👉 [View Converso Live](https://converso-tau.vercel.app)
+👉 [View Converso Live](https://converso-jet.vercel.app/)
 
 ---
 
